@@ -1,16 +1,21 @@
 import React from 'react';
-import NavBar from '../Shared/NavBar/NavBar';
 import { Link } from 'react-router-dom';
+import NavBar from '../Shared/NavBar/NavBar';
 
-const Login = () => {
+const Register = () => {
 
-    const handleLogin = e => {
+    const handleRegister = e => {
         e.preventDefault();
         console.log(e.currentTarget);
         const form = new FormData(e.currentTarget)
-        console.log(form.get('email'));
+        const name = form.get('name')
+        const photo = form.get('photo')
+        const email = form.get('name')
+        const password = form.get('password')
+        // console.log(name, photo, email, password);
 
     }
+
 
     return (
         <div>
@@ -18,10 +23,22 @@ const Login = () => {
             <div className="">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-4xl font-semibold">Login now!</h1>
+                        <h1 className="text-4xl font-semibold">Register now!</h1>
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                        <form onSubmit={handleLogin} className="card-body">
+                        <form onSubmit={handleRegister} className="card-body">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input name='name' type="name" placeholder="name" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo URL</span>
+                                </label>
+                                <input name='photo' type="text" placeholder="photo URL" className="input input-bordered" required />
+                            </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -41,7 +58,7 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                         </form>
-                        <p className='text-center mb-3'>Don't have account? <Link to='/register' className='text-blue-400 font-bold'>Register</Link></p>
+                        <p className='text-center mb-3'>Already have an account? <Link to='/login' className='text-blue-400 font-bold'>Login</Link></p>
                     </div>
                 </div>
             </div>
@@ -49,4 +66,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
